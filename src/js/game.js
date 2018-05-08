@@ -1,11 +1,13 @@
 (function() {
 	'use strict';
 	
+	const FLIP_TIME = 250;
+	const lEVEL_TIMEOUT = 60;
+
 	var cardNodes = [];
 	var cards = [];
 	var openCardsIndexes = [];
 	var amountOfGuessedPairs = 0;
-	var FLIP_TIMEOUT = 250;
 	var timer = createTimer(showTime, isTimeUp);
 
 	var game = document.createElement('div');
@@ -16,11 +18,11 @@
 	var content;
 	
 	var popUp = createModalDialog(document.body, content);
-	
+
 	function startGame(container, numberOfPairs) {
 		createCards(container, numberOfPairs);
 		
-		timer.start(10);
+		timer.start(lEVEL_TIMEOUT);
 		showTime(clock);
 	}
 	
@@ -108,9 +110,12 @@
 				var index2 = openCardsIndexes[1];	
 				if (cards[index1] === cards[index2]) {
 					amountOfGuessedPairs++;
-					setTimeout(function() {hideOpenCards(); setTimeout(isAllPairsFound, 0);}, FLIP_TIMEOUT);
+					setTimeout(function() {
+						hideOpenCards(); 
+						setTimeout(isAllPairsFound, 0);
+					}, FLIP_TIME);
 				} else {
-					setTimeout(closeOpenCards, FLIP_TIMEOUT);
+					setTimeout(closeOpenCards, FLIP_TIME);
 				}
 			}
 		}
@@ -136,12 +141,11 @@
 		if (amountOfGuessedPairs === cards.length/2) {
 			timer.stop();
 			popUp.open('You win!!!');
-			//alert('You win!!!');
 		}
 	}
 	
 	function destroy() {
-		//отвязать все привязанные обработчики событий
+		// remove event listeners
 		for (var i = 0; i < cards.length; i++) {
 			cardNodes[i].removeEventListener('click', openCard, false);
 		}
@@ -151,14 +155,13 @@
 		var time = timer.getTime();
 		if (time === 0) {
 			popUp.open('You lose!!!');
-			//alert('You lose!!!');
 			destroy();
 		}
 	}	
-	
+
 	function showTime() {
 		clock = getElement(clock);
-		clock.innerHTML = 'Осталось ' + timer.getTime() + 'c';
+		clock.innerHTML = `${timer.getTime()}s left`;
 	}	
 	
 	window.startGame = startGame;
