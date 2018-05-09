@@ -58,8 +58,6 @@ function createModalDialog(container, content) {
 	
 	function close() {
 		modalDialog.classList.add('modal-dialog--hidden');
-		modalDialogSubstrate.removeEventListener('click', substrateCloseModalDialog, false);
-		modalDialogIcon.removeEventListener('click', buttonCloseModalDialog, false);
 	}
 	
 	return {
