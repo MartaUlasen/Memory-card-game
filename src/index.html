@@ -8,6 +8,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="0px" height="0px" xml:space="preserve" style="display: none;">
+            <symbol	id="icon-menu" viewBox="0 0 24 24" fill="none">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </symbol>
+        </svg>
+        <header class="header">
+			<a class="header__logo" href="#">Memory card game	
+			</a>
+			<button class="js-menu-toggler header__menu-toggler" href"#">
+				<svg class="icon-menu">
+					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-menu"></use>
+				</svg>
+			</button>
+		</header>
+        <ul class="menu">
+            <div class="menu__title">Select the difficulty og the game</div>
+            <li class="menu__item">
+                <button class="menu__link">Easy</button>
+            </li>
+            <li class="menu__item">
+                <button class="menu__link">Medium</button>
+            </li>
+            <li class="menu__item">
+                <button class="menu__link">Hard</button>
+            </li>
+        </ul>
 		<div class="container"></div>
     </body>
 </html>

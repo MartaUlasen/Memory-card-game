@@ -5,6 +5,69 @@ $game-padding: 16px;
 $card-height: calc((100vh - #{$game-padding}*2 - #{$clock-height} - #{$numberOfRows} * 2 * #{$card-margin} ) / #{$numberOfRows});
 $FLIP_TIME: 0.2s;
 
+.header {
+	display: flex;
+	justify-content: center;
+	background-color: #1f1e1e;
+	line-height: 4rem;
+}
+
+.header__logo {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+	color: #fff;
+	font-size: 1.25rem;;
+}
+
+.header__menu-toggler {
+	display: none;
+	padding: 0;
+	color: black;
+	background-color: transparent;
+	box-shadow: none;
+	border: 0;
+	outline: none;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+	list-style: none;
+	background-color: #3d3d3d;
+    color: #fff;
+}
+
+.menu__title {
+	text-align: center;
+    font-size: 1rem;
+    padding: 20px;
+}
+
+.menu__link {
+	background-color: transparent;
+	//box-shadow: none;
+	border: 0;
+	outline: none;
+	color: #fff;
+	width: 100%;
+    border: none;
+    border-radius: 0;
+    font-size: 1rem;
+    line-height: 3em;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease-in;
+}
+
+.icon-menu {
+	width: 24px;
+	height: 24px;
+	stroke: black;
+    stroke-width: 2px;
+}
+
 .clock {
 	display: flex;
 	justify-content: center;
