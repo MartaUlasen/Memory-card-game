@@ -14,6 +14,9 @@
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </symbol>
+            <symbol	id="icon-down" viewBox="0 0 24 24" fill="none">
+				<polyline points="6 9 12 15 18 9"></polyline>
+			</symbol>
         </svg>
         <header class="header">
 			<a class="header__logo" href="#">Memory card game	
@@ -23,19 +26,26 @@
 					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-menu"></use>
 				</svg>
 			</button>
-		</header>
-        <ul class="menu">
-            <div class="menu__title">Select the difficulty og the game</div>
-            <li class="menu__item">
-                <button class="menu__link">Easy</button>
-            </li>
-            <li class="menu__item">
-                <button class="menu__link">Medium</button>
-            </li>
-            <li class="menu__item">
-                <button class="menu__link">Hard</button>
-            </li>
-        </ul>
+        </header>
+        <nav class="navigation">
+            <ul class="menu">
+                <div class="menu__title">Select the difficulty og the game</div>
+                <li class="menu__item">
+                    <button class="menu__link btn">Easy</button>
+                </li>
+                <li class="menu__item">
+                    <button class="menu__link btn">Medium</button>
+                </li>
+                <li class="menu__item">
+                    <button class="menu__link btn">Hard</button>
+                </li>
+            </ul>
+            <button class="navigation__btn btn">
+                <svg class="icon-down">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-down"></use>
+                </svg>
+            </button>
+        </nav
 		<div class="container"></div>
     </body>
 </html>
