@@ -54,6 +54,7 @@ function createModalDialog(container, content) {
 		modalDialogSubstrate.addEventListener('click', close, false);
 		modalDialogIcon.addEventListener('click', close, false);
 		modalDialogBody.innerHTML = content;
+		return modalDialog;
 	}
 	
 	function close() {
@@ -68,4 +69,3 @@ function createModalDialog(container, content) {
 }
 
 export default createModalDialog;
-	

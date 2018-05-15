@@ -2,7 +2,7 @@ import createTimer from './timer';
 import createModalDialog from './popup';
 
 const FLIP_TIME = 250;
-const lEVEL_TIMEOUT = 60;
+const LEVEL_TIMEOUT = 60;
 
 var cardNodes = [];
 var cards = [];
@@ -15,14 +15,11 @@ game.className = 'game';
 var clock = document.createElement('div');
 clock.className = 'clock';		
 game.appendChild(clock);
-var content;
 
-var popUp = createModalDialog(document.body, content);
-
-function startGame(container, numberOfPairs) {
+function startGame(container, numberOfPairs, levelTimeOut = LEVEL_TIMEOUT) {
 	createCards(container, numberOfPairs);
 	
-	timer.start(lEVEL_TIMEOUT);
+	timer.start(levelTimeOut);
 	showTime(clock);
 }
 
