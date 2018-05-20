@@ -1,6 +1,7 @@
 import createTimer from './timer';
 import createModalDialog from './popup';
-
+import {menuTemplate, menu, popUp, studyFunc} from './navigation';
+studyFunc();
 const FLIP_TIME = 250;
 const LEVEL_TIMEOUT = 60;
 
@@ -9,7 +10,6 @@ var cards = [];
 var openCardsIndexes = [];
 var amountOfGuessedPairs = 0;
 var timer = createTimer(showTime, isTimeUp);
-
 var game = document.createElement('div');
 game.className = 'game';
 var clock = document.createElement('div');
@@ -137,7 +137,7 @@ function closeOpenCards() {
 function isAllPairsFound() {
 	if (amountOfGuessedPairs === cards.length/2) {
 		timer.stop();
-		popUp.open('You win!!!');
+		popUp.open('You win!!!', menuTemplate);
 	}
 }
 
@@ -150,7 +150,7 @@ function destroy() {
 function isTimeUp() {
 	var time = timer.getTime();
 	if (time === 0) {
-		popUp.open('You lose!!!');
+		popUp.open('You lose!!!', menuTemplate);
 		destroy();
 	}
 }	
