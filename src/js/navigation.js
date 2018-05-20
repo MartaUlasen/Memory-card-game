@@ -1,7 +1,7 @@
 import startGame from './game';
 import createModalDialog from './popup';
 
-export const menuTemplate = document.querySelector('.js-menu-container').innerHTML;
+export const menuTemplate = document.querySelector('.js-menu');
 export const popUp = createModalDialog(document.body, menu);
 export const menu = popUp.open('', menuTemplate);
 
@@ -24,9 +24,3 @@ const evnt = () => {
 	}
 }
 evnt();
-
-/* export function  studyFunc () {
-	console.log("ура! получилось!!!")
-} */
-
-//export {studyFunc};

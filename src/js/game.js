@@ -1,22 +1,22 @@
 import createTimer from './timer';
 import createModalDialog from './popup';
-import {menuTemplate, menu, popUp, studyFunc} from './navigation';
-studyFunc();
+import {menuTemplate, menu, popUp} from './navigation';
+
 const FLIP_TIME = 250;
 const LEVEL_TIMEOUT = 60;
 
-var cardNodes = [];
-var cards = [];
-var openCardsIndexes = [];
-var amountOfGuessedPairs = 0;
-var timer = createTimer(showTime, isTimeUp);
-var game = document.createElement('div');
+let cardNodes = [];
+let cards = [];
+let openCardsIndexes = [];
+let amountOfGuessedPairs = 0;
+const timer = createTimer(showTime, isTimeUp);
+const game = document.createElement('div');
 game.className = 'game';
-var clock = document.createElement('div');
-clock.className = 'clock';		
-game.appendChild(clock);
+let clock = document.createElement('div');
+clock.className = 'clock';
 
-function startGame(container, numberOfPairs, levelTimeOut = LEVEL_TIMEOUT) {
+export function startGame(container, numberOfPairs, levelTimeOut = LEVEL_TIMEOUT) {
+	
 	createCards(container, numberOfPairs);
 	
 	timer.start(levelTimeOut);
@@ -24,15 +24,17 @@ function startGame(container, numberOfPairs, levelTimeOut = LEVEL_TIMEOUT) {
 }
 
 function createCards(container, numberOfPairs) {
-	container = getElement(container);
-	var cardBack;
-	var cardFace;
-	var card;
-	var numberOfRows = 3;
-	var numberOfCols = numberOfPairs * 2 / numberOfRows;
-	var row;
+	const numberOfRows = 3;
+	const numberOfCols = numberOfPairs * 2 / numberOfRows;
 	
-	for (var i = 0; i < numberOfPairs; i++) {
+	container = getElement(container);
+	if (container.querySelector('.game')) {
+		//container.removeChild(game);
+		container.querySelector('.game').innerHTML = '';
+	}
+	
+	
+	for (let i = 0; i < numberOfPairs; i++) {
 		cards.push(i);
 		cards.push(i);
 	}
@@ -45,24 +47,24 @@ function createCards(container, numberOfPairs) {
 		numberOfCols = temp;
 	} */
 	
-	var index;
+	game.appendChild(clock);
 	
-	for (var i = 0; i < numberOfRows; i++) { 
-		row = document.createElement('div');
+	for (let i = 0; i < numberOfRows; i++) {
+		const row = document.createElement('div');
 		row.className = 'row';
-		for (var j = 0; j < numberOfCols; j++) {
-			index = i * numberOfCols + j;
+		for (let j = 0; j < numberOfCols; j++) {
+			const index = i * numberOfCols + j;
 			
-			card = document.createElement('div');
+			const card = document.createElement('div');
 			card.className = 'card';
 			card.dataset.index = index;
 			card.addEventListener('click', openCard, false);
 			
-			cardBack = document.createElement('div');
+			const cardBack = document.createElement('div');
 			cardBack.className = 'card__back';
 			card.appendChild(cardBack);
 			
-			cardFace = document.createElement('div');
+			const cardFace = document.createElement('div');
 			cardFace.className = 'card__face';
 			cardFace.textContent = cards[index];
 			card.appendChild(cardFace);
@@ -94,8 +96,8 @@ function compareRandom(a, b) {
 }
 	
 function openCard(e) {
-	var currentCard = this;
-	var idx = currentCard.dataset.index;
+	let currentCard = this;
+	let idx = currentCard.dataset.index;
 
 	if (openCardsIndexes.indexOf(idx) < 0) {
 		currentCard.classList.add('card--flipped');
@@ -103,8 +105,8 @@ function openCard(e) {
 		openCardsIndexes.push(idx);
 		
 		if (openCardsIndexes.length === 2) {
-			var index1 = openCardsIndexes[0];
-			var index2 = openCardsIndexes[1];	
+			let index1 = openCardsIndexes[0];
+			let index2 = openCardsIndexes[1];	
 			if (cards[index1] === cards[index2]) {
 				amountOfGuessedPairs++;
 				setTimeout(function() {
@@ -142,13 +144,13 @@ function isAllPairsFound() {
 }
 
 function destroy() {
-	for (var i = 0; i < cards.length; i++) {
+	for (let i = 0; i < cards.length; i++) {
 		cardNodes[i].removeEventListener('click', openCard, false);
 	}
 }
 
 function isTimeUp() {
-	var time = timer.getTime();
+	let time = timer.getTime();
 	if (time === 0) {
 		popUp.open('You lose!!!', menuTemplate);
 		destroy();

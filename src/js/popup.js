@@ -1,40 +1,31 @@
 function createModalDialog(container, content, template) {
-	var modalDialog;
-	var modalDialogContent;
-	var modalDialogSubstrate;
-	var modalDialogBody;
-	var modalDialogHeader;
-	var modalDialogIcon;
-	var modalDialogTitle;
 	
 	container = getElement(container);
 	
-	
-	modalDialogTitle = document.createElement('div');
+	const modalDialogTitle = document.createElement('div');
 	modalDialogTitle.className = 'modal-dialog__title';
 	
-	modalDialogIcon = document.createElement('button');
+	const modalDialogIcon = document.createElement('button');
 	modalDialogIcon.className = 'modal-dialog__icon';
 	modalDialogIcon.innerHTML = '×';
 	
-	modalDialogHeader = document.createElement('div');
+	const modalDialogHeader = document.createElement('div');
 	modalDialogHeader.className = 'modal-dialog__header';
 	modalDialogHeader.appendChild(modalDialogTitle);
 	modalDialogHeader.appendChild(modalDialogIcon);
 	
-	modalDialogBody = document.createElement('div');
+	const modalDialogBody = document.createElement('div');
 	modalDialogBody.className = 'modal-dialog__body';
-			
-	modalDialogContent = document.createElement('div');
+
+	const modalDialogContent = document.createElement('div');
 	modalDialogContent.className = 'modal-dialog__content';
 	modalDialogContent.appendChild(modalDialogHeader);
 	modalDialogContent.appendChild(modalDialogBody);
 	
-	modalDialogSubstrate = document.createElement('div');
+	const modalDialogSubstrate = document.createElement('div');
 	modalDialogSubstrate.className = 'modal-dialog__substrate';
 	
-			
-	modalDialog = document.createElement('div');
+	const modalDialog = document.createElement('div');
 	modalDialog.className = 'modal-dialog modal-dialog--hidden';
 	modalDialog.appendChild(modalDialogSubstrate);
 	modalDialog.appendChild(modalDialogContent);
@@ -54,7 +45,7 @@ function createModalDialog(container, content, template) {
 		modalDialogSubstrate.addEventListener('click', close, false);
 		modalDialogIcon.addEventListener('click', close, false);
 		modalDialogTitle.innerHTML = content;
-		modalDialogBody.innerHTML = template;
+		modalDialogBody.appendChild(template);
 		return modalDialog;
 	}
 	
@@ -64,7 +55,7 @@ function createModalDialog(container, content, template) {
 	
 	return {
 		open: open,
-		close: close			
+		close: close
 	}
 
 }
