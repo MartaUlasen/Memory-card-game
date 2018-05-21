@@ -1,9 +1,10 @@
 import startGame from './game';
 import createModalDialog from './popup';
 
-export const menuTemplate = document.querySelector('.js-menu');
+export const menuTemplLevel = document.querySelector('.js-menu-new-game');
+export const menuTemplResumeGame = document.querySelector('.js-menu-resume-game');
 export const popUp = createModalDialog(document.body, menu);
-export const menu = popUp.open('', menuTemplate);
+export const menu = popUp.open('', menuTemplLevel);
 
 const container = document.getElementsByClassName('container')[0];
 
@@ -24,3 +25,14 @@ const evnt = () => {
 	}
 }
 evnt();
+
+const newGameBtn = document.querySelector('.js-menu-resume-game').querySelector('.js-new-game');
+
+newGameBtn.addEventListener('click', function() {
+	popUp.open('', menuTemplLevel);
+});
+
+const resumeGameBtn = document.querySelector('.js-menu-resume-game').querySelector('.js-resume-game');
+resumeGameBtn.addEventListener('click', function() {
+	startGame(container, 9, 5);
+});

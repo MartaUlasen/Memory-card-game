@@ -21,7 +21,7 @@ $FLIP_TIME: 0.2s;
     padding: 20px;
 }
 
-.menu__difficulty {
+.menu__item {
 	background-color: transparent;
 	//box-shadow: none;
 	border: 0;
@@ -56,6 +56,14 @@ $FLIP_TIME: 0.2s;
 
 .game {
 	padding: #{$game-padding} 0;
+}
+
+.game__title {
+	display: flex;
+    flex-direction: row;
+	justify-content: center;
+	align-items: center;
+    padding: 0 145px;
 }
 
 .cards {
@@ -134,4 +142,27 @@ $FLIP_TIME: 0.2s;
 
 .hidden {
 	display: none;
+}
+
+.pause {
+    padding: 4px;
+	background-color: rgba(200,0,0,.5);
+    border: 0;
+    border-radius: 50%;
+    outline: none;
+	fill: #fff;
+	color: #fff;
+	&:hover {
+		cursor: pointer;
+		background-color: darken(rgba(200,0,0,.5), 5%);
+	}
+}
+
+.icon-pause {
+		width: 32px;
+		height: 32px;
+	svg {
+		width: 100%;
+		height: 100%;
+	}
 }

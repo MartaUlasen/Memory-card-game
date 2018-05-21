@@ -1,6 +1,6 @@
 import createTimer from './timer';
 import createModalDialog from './popup';
-import {menuTemplate, menu, popUp} from './navigation';
+import {menuTemplLevel, menuTemplResumeGame, menu, popUp} from './navigation';
 
 const FLIP_TIME = 250;
 const LEVEL_TIMEOUT = 60;
@@ -12,8 +12,18 @@ let amountOfGuessedPairs = 0;
 const timer = createTimer(showTime, isTimeUp);
 const game = document.createElement('div');
 game.className = 'game';
+const gameTitle = document.createElement('div');
+gameTitle.className = 'game__title';
 let clock = document.createElement('div');
 clock.className = 'clock';
+const btnPauseTemplate = document.querySelector('.pause');
+btnPauseTemplate.addEventListener('click', function () {
+	timer.stop();
+	popUp.open('', menuTemplResumeGame);
+
+}, false);
+gameTitle.appendChild(clock);
+gameTitle.appendChild(btnPauseTemplate);
 
 export function startGame(container, numberOfPairs, levelTimeOut = LEVEL_TIMEOUT) {
 	
@@ -47,8 +57,9 @@ function createCards(container, numberOfPairs) {
 		numberOfCols = temp;
 	} */
 	
-	game.appendChild(clock);
 	
+	game.appendChild(gameTitle);
+
 	for (let i = 0; i < numberOfRows; i++) {
 		const row = document.createElement('div');
 		row.className = 'row';
@@ -98,7 +109,6 @@ function compareRandom(a, b) {
 function openCard(e) {
 	let currentCard = this;
 	let idx = currentCard.dataset.index;
-
 	if (openCardsIndexes.indexOf(idx) < 0) {
 		currentCard.classList.add('card--flipped');
 		currentCard.removeEventListener('click', openCard, false);
@@ -139,7 +149,7 @@ function closeOpenCards() {
 function isAllPairsFound() {
 	if (amountOfGuessedPairs === cards.length/2) {
 		timer.stop();
-		popUp.open('You win!!!', menuTemplate);
+		popUp.open('You win!!!', menuTemplLevel);
 	}
 }
 
@@ -152,7 +162,7 @@ function destroy() {
 function isTimeUp() {
 	let time = timer.getTime();
 	if (time === 0) {
-		popUp.open('You lose!!!', menuTemplate);
+		popUp.open('You lose!!!', menuTemplLevel);
 		destroy();
 	}
 }	

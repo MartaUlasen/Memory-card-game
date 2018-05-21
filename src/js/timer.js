@@ -4,12 +4,20 @@ function createTimer(onTick, onTimeup) {
 
 	function start(timeout) {
 		time = timeout;
-		id = setInterval( increment, 1000 );
+		id = setInterval(increment, 1000);
 	}
 
 	function stop() {
 		clearInterval(id);
 		time = 0;
+	}
+
+	function pause() {
+		clearInterval(id);
+	}
+
+	function resume() {
+		id = setInterval(increment, 1000);
 	}
 
 	function getTime() {
@@ -29,7 +37,9 @@ function createTimer(onTick, onTimeup) {
 	return {
 		start: start,
 		stop: stop,
-		getTime: getTime
+		getTime: getTime,
+		pause: pause,
+		resume: resume
 	};
 }
 	

@@ -41,6 +41,8 @@ function createModalDialog(container, content, template) {
 	}
 	
 	function open(content, template) {
+		modalDialogTitle.innerHTML = '';
+		modalDialogBody.innerHTML = '';
 		modalDialog.classList.remove('modal-dialog--hidden');
 		modalDialogSubstrate.addEventListener('click', close, false);
 		modalDialogIcon.addEventListener('click', close, false);
