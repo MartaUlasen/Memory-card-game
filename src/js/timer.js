@@ -14,6 +14,7 @@ function createTimer(onTick, onTimeup) {
 
 	function pause() {
 		clearInterval(id);
+		return time;
 	}
 
 	function resume() {

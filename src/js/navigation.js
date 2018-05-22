@@ -1,5 +1,15 @@
-import startGame from './game';
+/* import {startGame, timer} from './game';
+import {createModalDialog, Popup} from './popup';// ?
+import createTimer from './timer';
+
+export const menuTemplLevel = document.querySelector('.js-menu-new-game');
+export const menuTemplResumeGame = document.querySelector('.js-menu-resume-game');
+export const popUp = new Popup(document.body, menu);// ?
+export const menu = popUp.open('', menuTemplLevel); */
+
+import {startGame, timer} from './game';
 import createModalDialog from './popup';
+import createTimer from './timer';
 
 export const menuTemplLevel = document.querySelector('.js-menu-new-game');
 export const menuTemplResumeGame = document.querySelector('.js-menu-resume-game');
@@ -34,5 +44,6 @@ newGameBtn.addEventListener('click', function() {
 
 const resumeGameBtn = document.querySelector('.js-menu-resume-game').querySelector('.js-resume-game');
 resumeGameBtn.addEventListener('click', function() {
-	startGame(container, 9, 5);
+	popUp.close;
+	timer.resume();
 });

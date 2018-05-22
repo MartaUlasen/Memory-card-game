@@ -9,7 +9,7 @@ let cardNodes = [];
 let cards = [];
 let openCardsIndexes = [];
 let amountOfGuessedPairs = 0;
-const timer = createTimer(showTime, isTimeUp);
+export const timer = createTimer(showTime, isTimeUp);
 const game = document.createElement('div');
 game.className = 'game';
 const gameTitle = document.createElement('div');
@@ -18,7 +18,7 @@ let clock = document.createElement('div');
 clock.className = 'clock';
 const btnPauseTemplate = document.querySelector('.pause');
 btnPauseTemplate.addEventListener('click', function () {
-	timer.stop();
+	timer.pause();
 	popUp.open('', menuTemplResumeGame);
 
 }, false);
