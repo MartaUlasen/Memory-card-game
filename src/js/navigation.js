@@ -1,19 +1,10 @@
-/* import {startGame, timer} from './game';
-import {createModalDialog, Popup} from './popup';// ?
-import createTimer from './timer';
-
-export const menuTemplLevel = document.querySelector('.js-menu-new-game');
-export const menuTemplResumeGame = document.querySelector('.js-menu-resume-game');
-export const popUp = new Popup(document.body, menu);// ?
-export const menu = popUp.open('', menuTemplLevel); */
-
 import {startGame, timer} from './game';
-import createModalDialog from './popup';
+import {createModalDialog, Popup} from './popup';
 import createTimer from './timer';
 
 export const menuTemplLevel = document.querySelector('.js-menu-new-game');
 export const menuTemplResumeGame = document.querySelector('.js-menu-resume-game');
-export const popUp = createModalDialog(document.body, menu);
+export const popUp = new Popup(document.body, menu);
 export const menu = popUp.open('', menuTemplLevel);
 
 const container = document.getElementsByClassName('container')[0];
@@ -25,6 +16,7 @@ const LEVEL_PARAMS = {
 }
 
 const gameLevelBtns = menu.querySelectorAll('.js-game-level');
+
 const evnt = () => {
 	for (let gameLevelBtn of gameLevelBtns) {
 		gameLevelBtn.addEventListener('click', function() {
@@ -44,6 +36,6 @@ newGameBtn.addEventListener('click', function() {
 
 const resumeGameBtn = document.querySelector('.js-menu-resume-game').querySelector('.js-resume-game');
 resumeGameBtn.addEventListener('click', function() {
-	popUp.close;
+	popUp.close();
 	timer.resume();
 });
