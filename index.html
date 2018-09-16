@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./css/style.bundle.css" rel="stylesheet"></head>
+    <body>
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="0px" height="0px" xml:space="preserve" style="display: none;">
+			<symbol id="icon-pause" viewBox="0 0 24 24" >
+				<rect x="6" y="4" width="4" height="16"></rect>
+				<rect x="14" y="4" width="4" height="16"></rect>
+			</symbol>
+		</svg>
+		<div class="menu-container js-menu-container hidden">
+        	<ul class="menu js-menu-new-game">
+        	    <div class="menu__title">Select the difficulty of the game</div>
+        	    <li class="menu__item">
+        	        <button type="button" class="menu__item js-game-level" data-level="easy">Easy</button>
+        	    </li>
+        	    <li class="menu__item">
+        	        <button type="button" class="menu__item js-game-level" data-level="medium">Medium</button>
+        	    </li>
+        	    <li class="menu__item">
+        	        <button type="button" class="menu__item js-game-level" data-level="hard">Hard</button>
+        	    </li>
+			</ul>
+			<ul class="menu js-menu-resume-game">
+				<div class="menu__title">Select new game or resume old game?</div>
+				<li class="menu__item">
+					<button type="button" class="menu__item js-new-game" data-level="new">New</button>
+				</li>
+				<li class="menu__item">
+					<button type="button" class="menu__item js-resume-game" data-level="old">Old</button>
+				</li>
+			</ul>
+		</div>
+		<div class="btn-pause-container hidden">
+			<button class="pause">
+				<div class="icon-pause">
+					<svg>
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-pause"></use>
+					</svg>
+				</div>
+			</button>
+		</div>
+		<div class="container">
+			
+		</div>
+    <script type="text/javascript" src="./js/bundle.js"></script></body>
+</html>
